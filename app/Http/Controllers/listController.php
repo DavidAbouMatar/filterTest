@@ -57,7 +57,7 @@ class listController extends Controller
         echo json_encode($filter);
       }else{
         $filter = Apartment::select('*')->leftjoin('expenses','expenses.listing_id' , '=', 'apartments.id')
-        ->where($data['atribute'], $operator, null)
+        ->where($data['atribute'], $operator, !null)
         ->get();
         echo json_encode($filter);
       }
