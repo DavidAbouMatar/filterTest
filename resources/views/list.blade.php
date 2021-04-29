@@ -35,8 +35,8 @@
       <div class="col col-lg-2">
         <select class="form-control-md" id="operator">
           <option selected disabled>Select An Operator</option>
-          <option value="=">is</option>
-          <option value="!=">is not</option>
+          <option value="is">is</option>
+          <option value="is_not">is not</option>
 
         </select>
       </div>
@@ -89,11 +89,11 @@
 
     if(atribute == "payment_period" || atribute == "created_at"){
 
-      var greater_than ='>'
-      if(($('#operator option[value=">"]').length == 0)) {
-        $("#operator").append('<option value=">">greater than</option>');}
+      var greater_than ='greater_than'
+      if(($('#operator option[value="greater_than"]').length == 0)) {
+        $("#operator").append('<option value="greater_than">greater than</option>');}
     }else{
-    $("#operator option[value='>']").remove();}
+    $("#operator option[value='greater_than']").remove();}
 
   });
   </script>
@@ -147,7 +147,7 @@ $(document).ready(function(){
    dataType:"json",
    success:function(data)
    {
-
+    console.log(data);
     var output = '';
     $('#total_records').text(data.length);
     for(var count = 0; count < data.length; count++)

@@ -24,8 +24,16 @@ class listController extends Controller
     function fetch_data(Request $request)
     {
       $data = $request->all();
+      $operator='';
+      if($data['operator'] == 'is'){
+        $operator = '=';
+      }elseif($data['operator'] == 'is_not'){
+        $operator = '!=';
+      }elseif($data['operator'] == 'greater_than'){
+        $operator = '>';
+      }
       
-      $operator = $data['operator'];
+      
       //if no filter applied fetch all data
       if($data['atribute'] =='Select An Atribute' || $data['operator'] =='Select An Operator' ){
         $filter = Apartment::select('*')->leftjoin('expenses','expenses.listing_id' , '=', 'apartments.id')->get();
